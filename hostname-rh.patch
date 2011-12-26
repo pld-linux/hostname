@@ -1,7 +1,6 @@
-diff -up hostname/hostname.1.rh hostname/hostname.1
---- hostname/hostname.1.rh	2010-01-15 13:05:22.000000000 +0100
-+++ hostname/hostname.1	2010-02-01 21:52:35.000000000 +0100
-@@ -98,6 +98,33 @@ complete FQDN of the system is returned 
+--- hostname/hostname.1.orig	2011-12-23 11:06:18.000000000 +0100
++++ hostname/hostname.1	2011-12-26 13:51:57.685537617 +0100
+@@ -98,6 +98,33 @@
  .B "THE FQDN"
  below).
  
@@ -35,7 +34,7 @@ diff -up hostname/hostname.1.rh hostname/hostname.1
  .SS "SET NAME"
  When called with one argument or with the
  .B \-\-file
-@@ -113,7 +140,7 @@ and
+@@ -113,7 +140,7 @@
  use
  .BR setdomainname (2).
  Note, that this is effective only until the next reboot.
@@ -44,7 +43,7 @@ diff -up hostname/hostname.1.rh hostname/hostname.1
  .LP
  Note, that only the super-user can change the names.
  .LP
-@@ -124,10 +151,10 @@ command (see
+@@ -124,10 +151,10 @@
  below).
  .LP
  The host name is usually set once at system startup in
@@ -57,7 +56,7 @@ diff -up hostname/hostname.1.rh hostname/hostname.1
  
  .SS THE FQDN
  You can't change the FQDN (as returned by
-@@ -227,7 +254,7 @@ Display the short host name. This is the
+@@ -227,7 +254,7 @@
  Print version information on standard output and exit successfully.
  .TP
  .I "\-v, \-\-verbose"
@@ -66,12 +65,13 @@ diff -up hostname/hostname.1.rh hostname/hostname.1
  .TP
  .I "\-y, \-\-yp, \-\-nis"
  Display the NIS domain name. If a parameter is given (or
-@@ -246,8 +273,7 @@ option in
+@@ -246,9 +273,7 @@
  .SH FILES
  .B /etc/hosts
  
 -.B /etc/hostname
--This file should only contain the hostname and not the full FQDN.
+-Historically this file was supposed to only contain the hostname and not the
+-full canonical FQDN. Nowadays most software is able to cope with a full FQDN here.
 +.B /etc/sysconfig/network
  .SH AUTHORS
  Peter Tobias, <tobias@et-inf.fho-emden.de>
