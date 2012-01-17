@@ -1,12 +1,12 @@
 Summary:	Utility to set/show the host name or domain name
 Summary(pl.UTF-8):	Narzędzie do ustawiania i sprawdzania nazwy hosta lub domeny
 Name:		hostname
-Version:	3.09
+Version:	3.10
 Release:	1
 License:	GPL v2+
 Group:		Base
 Source0:	ftp://ftp.debian.org/debian/pool/main/h/hostname/%{name}_%{version}.tar.gz
-# Source0-md5:	5fe1250d97fdcc08c4fe9cd21132efef
+# Source0-md5:	beff8b0b16ae63eb1ca6b9988929ac86
 Patch1:		%{name}-rh.patch
 URL:		http://packages.qa.debian.org/h/hostname.html
 BuildRequires:	iconv
@@ -31,7 +31,8 @@ iconv -f iso-8859-1 -t utf-8 -o hostname.tmp hostname.1.fr && mv hostname.tmp ho
 %build
 %{__make} \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcppflags} %{rpmcflags}"
+	CFLAGS="%{rpmcppflags} %{rpmcflags}" \
+	LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT

@@ -76,13 +76,12 @@
  .SH AUTHORS
  Peter Tobias, <tobias@et-inf.fho-emden.de>
  .br
-diff -up hostname/Makefile.rh hostname/Makefile
---- hostname/Makefile.rh	2010-01-15 13:05:16.000000000 +0100
-+++ hostname/Makefile	2010-02-01 21:47:25.000000000 +0100
-@@ -7,26 +7,28 @@ OBJS=hostname.o
+--- hostname/Makefile.orig	2012-01-15 13:50:32.000000000 +0100
++++ hostname/Makefile	2012-01-17 17:44:33.036317328 +0100
+@@ -7,26 +7,27 @@
  
  hostname: $(OBJS)
- 	$(CC) $(CFLAGS) -o $@ $(OBJS) -lnsl
+ 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS) -lnsl
 -	ln -fs hostname dnsdomainname
 -	ln -fs hostname domainname
 -	ln -fs hostname ypdomainname
@@ -103,7 +102,6 @@ diff -up hostname/Makefile.rh hostname/Makefile
 +	ln -fs hostname.1 ${BASEDIR}/usr/share/man/fr/man1/domainname.1
 +	ln -fs hostname.1 ${BASEDIR}/usr/share/man/fr/man1/ypdomainname.1
 +	ln -fs hostname.1 ${BASEDIR}/usr/share/man/fr/man1/nisdomainname.1
-+
  
  	install -d ${BASEDIR}/bin
 -	install -o root -g root -m 0755 hostname ${BASEDIR}/bin
