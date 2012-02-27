@@ -76,9 +76,9 @@
  .SH AUTHORS
  Peter Tobias, <tobias@et-inf.fho-emden.de>
  .br
---- hostname/Makefile.orig	2012-01-15 13:50:32.000000000 +0100
-+++ hostname/Makefile	2012-01-17 17:44:33.036317328 +0100
-@@ -7,26 +7,27 @@
+--- hostname/Makefile.orig	2012-02-16 16:00:52.000000000 +0100
++++ hostname/Makefile	2012-02-27 19:50:50.216326829 +0100
+@@ -7,22 +7,23 @@
  
  hostname: $(OBJS)
  	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS) -lnsl
@@ -95,7 +95,7 @@
  	ln -fs hostname.1 ${BASEDIR}/usr/share/man/man1/domainname.1
  	ln -fs hostname.1 ${BASEDIR}/usr/share/man/man1/ypdomainname.1
  	ln -fs hostname.1 ${BASEDIR}/usr/share/man/man1/nisdomainname.1
--	install -o root -g root -m 0644 hostname.1.fr ${BASEDIR}/usr/share/man/fr/man1/hostname.1
+-	#install -o root -g root -m 0644 hostname.1.fr ${BASEDIR}/usr/share/man/fr/man1/hostname.1
 +	install -d ${BASEDIR}/usr/share/man/fr/man1
 +	install -m 0644 hostname.1.fr ${BASEDIR}/usr/share/man/fr/man1/hostname.1
 +	ln -fs hostname.1 ${BASEDIR}/usr/share/man/fr/man1/dnsdomainname.1
@@ -105,15 +105,7 @@
  
  	install -d ${BASEDIR}/bin
 -	install -o root -g root -m 0755 hostname ${BASEDIR}/bin
--	ln -f hostname ${BASEDIR}/bin/dnsdomainname
--	ln -f hostname ${BASEDIR}/bin/domainname
--	ln -f hostname ${BASEDIR}/bin/nisdomainname
--	ln -f hostname ${BASEDIR}/bin/ypdomainname
 +	install -m 0755 hostname ${BASEDIR}/bin
-+	ln -fs hostname ${BASEDIR}/bin/dnsdomainname
-+	ln -fs hostname ${BASEDIR}/bin/domainname
-+	ln -fs hostname ${BASEDIR}/bin/nisdomainname
-+	ln -fs hostname ${BASEDIR}/bin/ypdomainname
- 
- clean:
- 	-rm -f $(OBJS) hostname dnsdomainname domainname nisdomainname ypdomainname
+ 	ln -f hostname ${BASEDIR}/bin/dnsdomainname
+ 	ln -f hostname ${BASEDIR}/bin/domainname
+ 	ln -f hostname ${BASEDIR}/bin/nisdomainname
