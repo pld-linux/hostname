@@ -1,6 +1,6 @@
---- hostname/hostname.1.orig	2011-12-23 11:06:18.000000000 +0100
-+++ hostname/hostname.1	2011-12-26 13:51:57.685537617 +0100
-@@ -98,6 +98,33 @@
+--- hostname/hostname.1.orig	2012-12-06 16:18:46.000000000 +0100
++++ hostname/hostname.1	2012-12-09 11:54:21.413750393 +0100
+@@ -84,6 +84,33 @@
  .B "THE FQDN"
  below).
  
@@ -34,7 +34,7 @@
  .SS "SET NAME"
  When called with one argument or with the
  .B \-\-file
-@@ -113,7 +140,7 @@
+@@ -99,7 +126,7 @@
  use
  .BR setdomainname (2).
  Note, that this is effective only until the next reboot.
@@ -43,7 +43,7 @@
  .LP
  Note, that only the super-user can change the names.
  .LP
-@@ -124,10 +151,10 @@
+@@ -110,10 +137,10 @@
  below).
  .LP
  The host name is usually set once at system startup in
@@ -55,27 +55,25 @@
 +.IR /etc/sysconfig/network ).
  
  .SS THE FQDN
- You can't change the FQDN (as returned by
-@@ -227,7 +254,7 @@
- Print version information on standard output and exit successfully.
+ The FQDN (Fully Qualified Domain Name) of the system is the name that the
+@@ -225,7 +252,7 @@
+ Display the short host name. This is the host name cut at the first dot.
  .TP
  .I "\-v, \-\-verbose"
 -Be verbose and tell what's going on.
 +Verbose output was removed.
  .TP
- .I "\-y, \-\-yp, \-\-nis"
- Display the NIS domain name. If a parameter is given (or
-@@ -246,9 +273,7 @@
+ .I "\-V, \-\-version"
+ Print version information on standard output and exit successfully.
+@@ -248,7 +275,7 @@
+ option in
+ .BR /etc/resolv.conf .
  .SH FILES
- .B /etc/hosts
- 
 -.B /etc/hostname
--Historically this file was supposed to only contain the hostname and not the
--full canonical FQDN. Nowadays most software is able to cope with a full FQDN here.
 +.B /etc/sysconfig/network
- .SH AUTHORS
- Peter Tobias, <tobias@et-inf.fho-emden.de>
- .br
+ Historically this file was supposed to only contain the hostname and not the
+ full canonical FQDN. Nowadays most software is able to cope with a full FQDN
+ here. This file is read at boot time by the system initialization scripts to
 --- hostname/Makefile.orig	2012-02-16 16:00:52.000000000 +0100
 +++ hostname/Makefile	2012-02-27 19:50:50.216326829 +0100
 @@ -7,22 +7,23 @@
