@@ -1,12 +1,12 @@
 Summary:	Utility to set/show the host name or domain name
 Summary(pl.UTF-8):	Narzędzie do ustawiania i sprawdzania nazwy hosta lub domeny
 Name:		hostname
-Version:	3.12
+Version:	3.13
 Release:	1
 License:	GPL v2+
 Group:		Base
 Source0:	ftp://ftp.debian.org/debian/pool/main/h/hostname/%{name}_%{version}.tar.gz
-# Source0-md5:	f7965b63320f66cc1cbd5fa031d1bcd7
+# Source0-md5:	ff2e7b7534999dcbaa0d420991ce353a
 Patch1:		%{name}-rh.patch
 URL:		http://packages.qa.debian.org/h/hostname.html
 BuildRequires:	iconv
@@ -23,7 +23,7 @@ Ten pakiet udostępnia polecenia służące do wypisywania nazwy DNS
 systemu oraz ustawiania nazwy hosta lub domeny NIS.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 %patch1 -p1
 
 iconv -f iso-8859-1 -t utf-8 -o hostname.tmp hostname.1.fr && mv hostname.tmp hostname.1.fr

@@ -56,15 +56,6 @@
  
  .SS THE FQDN
  The FQDN (Fully Qualified Domain Name) of the system is the name that the
-@@ -225,7 +252,7 @@
- Display the short host name. This is the host name cut at the first dot.
- .TP
- .I "\-v, \-\-verbose"
--Be verbose and tell what's going on.
-+Verbose output was removed.
- .TP
- .I "\-V, \-\-version"
- Print version information on standard output and exit successfully.
 @@ -248,7 +275,7 @@
  option in
  .BR /etc/resolv.conf .
