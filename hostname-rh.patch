@@ -65,8 +65,8 @@
  Historically this file was supposed to only contain the hostname and not the
  full canonical FQDN. Nowadays most software is able to cope with a full FQDN
  here. This file is read at boot time by the system initialization scripts to
---- hostname/Makefile.orig	2012-02-16 16:00:52.000000000 +0100
-+++ hostname/Makefile	2012-02-27 19:50:50.216326829 +0100
+--- hostname/Makefile.orig	2013-09-14 07:43:56.738832590 +0200
++++ hostname/Makefile	2013-09-14 07:52:31.232144332 +0200
 @@ -7,22 +7,23 @@
  
  hostname: $(OBJS)
@@ -95,6 +95,6 @@
  	install -d ${BASEDIR}/bin
 -	install -o root -g root -m 0755 hostname ${BASEDIR}/bin
 +	install -m 0755 hostname ${BASEDIR}/bin
- 	ln -f hostname ${BASEDIR}/bin/dnsdomainname
- 	ln -f hostname ${BASEDIR}/bin/domainname
- 	ln -f hostname ${BASEDIR}/bin/nisdomainname
+ 	ln -fs hostname ${BASEDIR}/bin/dnsdomainname
+ 	ln -fs hostname ${BASEDIR}/bin/domainname
+ 	ln -fs hostname ${BASEDIR}/bin/nisdomainname
