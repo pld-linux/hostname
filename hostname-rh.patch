@@ -65,9 +65,9 @@
  Historically this file was supposed to only contain the hostname and not the
  full canonical FQDN. Nowadays most software is able to cope with a full FQDN
  here. This file is read at boot time by the system initialization scripts to
---- hostname/Makefile.orig	2013-09-14 07:43:56.738832590 +0200
-+++ hostname/Makefile	2013-09-14 07:52:31.232144332 +0200
-@@ -7,22 +7,23 @@
+--- hostname/Makefile.orig	2013-11-07 19:16:18.797171655 +0100
++++ hostname/Makefile	2013-11-07 19:22:08.767156968 +0100
+@@ -10,21 +10,17 @@
  
  hostname: $(OBJS)
  	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS) -lnsl
@@ -77,24 +77,17 @@
 -	ln -fs hostname nisdomainname
  
  install: hostname
- 	install -d ${BASEDIR}/usr/share/man/man1
--	install -o root -g root -m 0644 hostname.1 ${BASEDIR}/usr/share/man/man1
-+	install -m 0644 hostname.1 ${BASEDIR}/usr/share/man/man1
- 	ln -fs hostname.1 ${BASEDIR}/usr/share/man/man1/dnsdomainname.1
- 	ln -fs hostname.1 ${BASEDIR}/usr/share/man/man1/domainname.1
- 	ln -fs hostname.1 ${BASEDIR}/usr/share/man/man1/ypdomainname.1
- 	ln -fs hostname.1 ${BASEDIR}/usr/share/man/man1/nisdomainname.1
--	#install -o root -g root -m 0644 hostname.1.fr ${BASEDIR}/usr/share/man/fr/man1/hostname.1
-+	install -d ${BASEDIR}/usr/share/man/fr/man1
-+	install -m 0644 hostname.1.fr ${BASEDIR}/usr/share/man/fr/man1/hostname.1
-+	ln -fs hostname.1 ${BASEDIR}/usr/share/man/fr/man1/dnsdomainname.1
-+	ln -fs hostname.1 ${BASEDIR}/usr/share/man/fr/man1/domainname.1
-+	ln -fs hostname.1 ${BASEDIR}/usr/share/man/fr/man1/ypdomainname.1
-+	ln -fs hostname.1 ${BASEDIR}/usr/share/man/fr/man1/nisdomainname.1
+ 	install -d ${BASEDIR}$(MANDIR)/man1
+-	install -o root -g root -m 0644 hostname.1 ${BASEDIR}$(MANDIR)/man1
++	install -m 0644 hostname.1 ${BASEDIR}$(MANDIR)/man1
+ 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/dnsdomainname.1
+ 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/domainname.1
+ 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/ypdomainname.1
+ 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/nisdomainname.1
  
- 	install -d ${BASEDIR}/bin
--	install -o root -g root -m 0755 hostname ${BASEDIR}/bin
-+	install -m 0755 hostname ${BASEDIR}/bin
- 	ln -fs hostname ${BASEDIR}/bin/dnsdomainname
- 	ln -fs hostname ${BASEDIR}/bin/domainname
- 	ln -fs hostname ${BASEDIR}/bin/nisdomainname
+ 	install -d ${BASEDIR}$(BINDIR)
+-	install -o root -g root -m 0755 hostname ${BASEDIR}$(BINDIR)
++	install -m 0755 hostname ${BASEDIR}$(BINDIR)
+ 	ln -fs hostname ${BASEDIR}$(BINDIR)/dnsdomainname
+ 	ln -fs hostname ${BASEDIR}$(BINDIR)/domainname
+ 	ln -fs hostname ${BASEDIR}$(BINDIR)/nisdomainname
