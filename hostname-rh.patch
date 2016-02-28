@@ -65,12 +65,12 @@
  Historically this file was supposed to only contain the hostname and not the
  full canonical FQDN. Nowadays most software is able to cope with a full FQDN
  here. This file is read at boot time by the system initialization scripts to
---- hostname/Makefile.orig	2013-11-07 19:16:18.797171655 +0100
-+++ hostname/Makefile	2013-11-07 19:22:08.767156968 +0100
+--- hostname/Makefile.orig	2016-02-28 12:33:13.235854973 +0100
++++ hostname/Makefile	2016-02-28 12:35:01.225850445 +0100
 @@ -10,21 +10,17 @@
  
  hostname: $(OBJS)
- 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS) -lnsl
+ 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
 -	ln -fs hostname dnsdomainname
 -	ln -fs hostname domainname
 -	ln -fs hostname ypdomainname
