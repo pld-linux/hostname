@@ -1,12 +1,12 @@
 Summary:	Utility to set/show the host name or domain name
 Summary(pl.UTF-8):	Narzędzie do ustawiania i sprawdzania nazwy hosta lub domeny
 Name:		hostname
-Version:	3.18
+Version:	3.21
 Release:	1
 License:	GPL v2+
 Group:		Base
-Source0:	ftp://ftp.debian.org/debian/pool/main/h/hostname/%{name}_%{version}.tar.gz
-# Source0-md5:	c03661d3e6ff449c45546d48e75342cb
+Source0:	http://ftp.debian.org/debian/pool/main/h/hostname/%{name}_%{version}.tar.gz
+# Source0-md5:	c89bf2e3f2877e707e8aad8c8e805269
 Patch1:		%{name}-rh.patch
 URL:		http://packages.qa.debian.org/h/hostname.html
 BuildRequires:	iconv
