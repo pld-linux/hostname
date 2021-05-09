@@ -1,7 +1,35 @@
---- hostname/hostname.1.orig	2012-12-06 16:18:46.000000000 +0100
-+++ hostname/hostname.1	2012-12-09 11:54:21.413750393 +0100
-@@ -84,6 +84,33 @@
- .B "THE FQDN"
+diff -urNp -x '*.orig' hostname.org/Makefile hostname/Makefile
+--- hostname.org/Makefile	2018-01-30 11:25:42.000000000 +0100
++++ hostname/Makefile	2021-05-09 20:19:07.910374609 +0200
+@@ -10,21 +10,17 @@ OBJS=hostname.o
+ 
+ hostname: $(OBJS)
+ 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+-	ln -fs hostname dnsdomainname
+-	ln -fs hostname domainname
+-	ln -fs hostname ypdomainname
+-	ln -fs hostname nisdomainname
+ 
+ install: hostname
+ 	install -d ${BASEDIR}$(MANDIR)/man1
+-	install -o root -g root -m 0644 hostname.1 ${BASEDIR}$(MANDIR)/man1
++	install -m 0644 hostname.1 ${BASEDIR}$(MANDIR)/man1
+ 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/dnsdomainname.1
+ 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/domainname.1
+ 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/ypdomainname.1
+ 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/nisdomainname.1
+ 
+ 	install -d ${BASEDIR}$(BINDIR)
+-	install -o root -g root -m 0755 hostname ${BASEDIR}$(BINDIR)
++	install -m 0755 hostname ${BASEDIR}$(BINDIR)
+ 	ln -fs hostname ${BASEDIR}$(BINDIR)/dnsdomainname
+ 	ln -fs hostname ${BASEDIR}$(BINDIR)/domainname
+ 	ln -fs hostname ${BASEDIR}$(BINDIR)/nisdomainname
+diff -urNp -x '*.orig' hostname.org/hostname.1 hostname/hostname.1
+--- hostname.org/hostname.1	2018-09-27 10:41:06.000000000 +0200
++++ hostname/hostname.1	2021-05-09 20:19:07.910374609 +0200
+@@ -80,6 +80,33 @@ complete FQDN of the system is returned
+ .B THE FQDN
  below).
  
 +.LP
@@ -34,7 +62,7 @@
  .SS "SET NAME"
  When called with one argument or with the
  .B \-\-file
-@@ -99,7 +126,7 @@
+@@ -95,7 +122,7 @@ and
  use
  .BR setdomainname (2).
  Note, that this is effective only until the next reboot.
@@ -43,7 +71,7 @@
  .LP
  Note, that only the super-user can change the names.
  .LP
-@@ -110,10 +137,10 @@
+@@ -106,10 +133,10 @@ command (see
  below).
  .LP
  The host name is usually set once at system startup in
@@ -56,7 +84,7 @@
  
  .SS THE FQDN
  The FQDN (Fully Qualified Domain Name) of the system is the name that the
-@@ -248,7 +275,7 @@
+@@ -241,7 +268,7 @@ try IPv6 lookups first by using the
  option in
  .BR /etc/resolv.conf .
  .SH FILES
@@ -65,29 +93,3 @@
  Historically this file was supposed to only contain the hostname and not the
  full canonical FQDN. Nowadays most software is able to cope with a full FQDN
  here. This file is read at boot time by the system initialization scripts to
---- hostname/Makefile.orig	2016-02-28 12:33:13.235854973 +0100
-+++ hostname/Makefile	2016-02-28 12:35:01.225850445 +0100
-@@ -10,21 +10,17 @@
- 
- hostname: $(OBJS)
- 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
--	ln -fs hostname dnsdomainname
--	ln -fs hostname domainname
--	ln -fs hostname ypdomainname
--	ln -fs hostname nisdomainname
- 
- install: hostname
- 	install -d ${BASEDIR}$(MANDIR)/man1
--	install -o root -g root -m 0644 hostname.1 ${BASEDIR}$(MANDIR)/man1
-+	install -m 0644 hostname.1 ${BASEDIR}$(MANDIR)/man1
- 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/dnsdomainname.1
- 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/domainname.1
- 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/ypdomainname.1
- 	ln -fs hostname.1 ${BASEDIR}$(MANDIR)/man1/nisdomainname.1
- 
- 	install -d ${BASEDIR}$(BINDIR)
--	install -o root -g root -m 0755 hostname ${BASEDIR}$(BINDIR)
-+	install -m 0755 hostname ${BASEDIR}$(BINDIR)
- 	ln -fs hostname ${BASEDIR}$(BINDIR)/dnsdomainname
- 	ln -fs hostname ${BASEDIR}$(BINDIR)/domainname
- 	ln -fs hostname ${BASEDIR}$(BINDIR)/nisdomainname
